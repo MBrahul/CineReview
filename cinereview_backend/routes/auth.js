@@ -37,7 +37,7 @@ router.post('/createUser', [body('email', 'Enter correct email').isEmail(), body
             user = await User.create(newUser).then((user) => {
                 res.json({
                     status: true,
-                    user: newUser
+                    user: user
                 })
             })
         }
