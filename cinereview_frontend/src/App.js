@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import SignIn from "./components/SignIn";
 import MovieState from "./context/Movies/MovieState";
 import AdminLogin from './components/AdminLogin'
-import AddMovie from "./components/AddMovie";
 
 function App() {
   return (
