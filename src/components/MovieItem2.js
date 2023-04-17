@@ -13,7 +13,7 @@ export default function MovieItem2(props) {
             <ion-icon name="star-outline"></ion-icon>
         </div>
         <p><b>Overview : </b>{overview}</p>
-        <p> Language : {language}</p>
+        <p> Language : {language==="hi"?"Hindi":"English"}</p>
         <p> Release Date :  {release_date}</p>
      </div>
      </div>
