@@ -32,13 +32,24 @@ const searchMovies = async () => {
  }
 }
 
+const getMovies = async (page) => {
+      dispatch(actionCreators.searchString(""))
+      dispatch(actionCreators.updateSearching(false));
+      dispatch(actionCreators.resetPage());
+      let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=bcc4ff10c2939665232d75d8bf0ec093&language=en-US&page=${page}`);
+      let json = await response.json();
+      dispatch(actionCreators.updateMovies(json.results));
+      dispatch(actionCreators.setTotalPages(json.total_pages));
+ 
+}
+
 
   return (
     <>
       <div className="Navbar">
         <div className="nav-container1">
             <img src={logo} alt="" />
-            <h1>CineReview</h1>
+            <h1 onClick={getMovies} style={{cursor:"pointer"}} >CineReview</h1>
         </div>
         <div className="nav-container2">
           <input type="text" name="search" id="search" placeholder ="Search Movies ... " value={searchString} onChange={changeSearchString} />
