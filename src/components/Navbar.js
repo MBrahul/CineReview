@@ -33,13 +33,19 @@ const searchMovies = async () => {
 }
 
 const getMovies = async (page) => {
+  dispatch(actionCreators.setProgress(10));
       dispatch(actionCreators.searchString(""))
+      dispatch(actionCreators.setProgress(40));
       dispatch(actionCreators.updateSearching(false));
+      dispatch(actionCreators.setProgress(70));
       dispatch(actionCreators.resetPage());
       let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=bcc4ff10c2939665232d75d8bf0ec093&language=en-US&page=${page}`);
+      dispatch(actionCreators.setProgress(90));
       let json = await response.json();
       dispatch(actionCreators.updateMovies(json.results));
+      dispatch(actionCreators.setProgress(100));
       dispatch(actionCreators.setTotalPages(json.total_pages));
+      dispatch(actionCreators.setProgress(0));
  
 }
 
